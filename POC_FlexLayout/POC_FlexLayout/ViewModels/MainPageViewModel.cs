@@ -18,6 +18,7 @@ namespace POC_FlexLayout.ViewModels
         public MainPageViewModel(INavigationService navigationService) 
             : base (navigationService)
         {
+            //asdads
             Title = "Main Page";
             Sources = new ObservableCollection<string>();
 
