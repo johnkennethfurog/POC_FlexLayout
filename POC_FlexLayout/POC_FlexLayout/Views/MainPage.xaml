@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="POC_FlexLayout.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:flexLayout="clr-namespace:POC_FlexLayout"
+    Title="{Binding Title}">
+    <ScrollView>
+        <StackLayout x:Name="stack">
+            <Button Command="{Binding AddCommand}" Text="Add" />
+            <flexLayout:BindableFlexLayout
+                ItemsSource="{Binding Sources}"
+                AlignItems="Start"
+                JustifyContent="Start"
+                Wrap="Wrap">
+                <flexLayout:BindableFlexLayout.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="5"
+                                Padding="10"
+                                BackgroundColor="Orange"
+                                CascadeInputTransparent="True"
+                                CornerRadius="5"
+                                HasShadow="True">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.RemoveCommand, Source={x:Reference stack}}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"
+                                        Text="x"
+                                        TextColor="Red"
+                                        VerticalOptions="Start"
+                                        VerticalTextAlignment="Start" />
+                                    <Label
+                                        Text="{Binding .}"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </flexLayout:BindableFlexLayout.ItemTemplate>
+            </flexLayout:BindableFlexLayout>
+
+            <!--<FlexLayout
+                AlignItems="Start"
+                JustifyContent="Start"
+                Wrap="Wrap">
+
+
+
+                <Frame
+                    Margin="5"
+                    Padding="10"
+                    BackgroundColor="Orange"
+                    CascadeInputTransparent="True"
+                    CornerRadius="5"
+                    HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="x"
+                            TextColor="Red"
+                            VerticalOptions="Start"
+                            VerticalTextAlignment="Start" />
+                        <Label
+                            Text="Tagalog"
+                            TextColor="White"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+                    Margin="5"
+                    Padding="10"
+                    BackgroundColor="Orange"
+                    CascadeInputTransparent="True"
+                    CornerRadius="5"
+                    HasShadow="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="x"
+                            TextColor="Red"
+                            VerticalOptions="Start"
+                            VerticalTextAlignment="Start" />
+                        <Label
+                            Text="Thai"
+                            TextColor="White"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+
+            </FlexLayout>-->
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
